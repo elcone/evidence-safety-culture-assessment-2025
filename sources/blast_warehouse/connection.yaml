@@ -1,0 +1,5 @@
+# This file was automatically generated
+name: blast_warehouse
+type: motherduck
+options:
+  database: blast_warehouse
