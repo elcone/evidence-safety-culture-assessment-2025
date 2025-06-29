@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: 'main'
+    branches: "main"
 
 jobs:
   build:
@@ -21,9 +21,9 @@ jobs:
 
       - name: build
         env:
-          BASE_PATH: '/${{ github.event.repository.name }}'
-          EVIDENCE_SOURCE__my_source__username: ${{ secrets.EVIDENCE_SOURCE__MY_SOURCE__USERNAME }}
-          EVIDENCE_SOURCE__my_source__private_key: ${{ secrets.EVIDENCE_SOURCE__MY_SOURCE__PRIVATE_KEY }}
+          BASE_PATH: "/${{ github.event.repository.name }}"
+          EVIDENCE_SOURCE__blast_warehouse__database: ${{ secrets.EVIDENCE_SOURCE__blast_warehouse__database }}
+          EVIDENCE_SOURCE__blast_warehouse__token: ${{ secrets.EVIDENCE_SOURCE__blast_warehouse__token }}
         run: |
           npm run sources
           npm run build
@@ -31,7 +31,7 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'build/${{ github.event.repository.name }}'
+          path: "build/${{ github.event.repository.name }}"
 
   deploy:
     needs: build
