@@ -1,5 +1,5 @@
 ---
-title: Adinistrative Personnel
+title: Administrative Personnel
 sidebar_position: 5
 ---
 
