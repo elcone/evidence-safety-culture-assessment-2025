@@ -35,6 +35,7 @@ FROM blast_warehouse.administrative_score_counting
   data={score_rows}
   x="Score"
   y="Counts"
+  series="Code"
 />
 
 {/each}

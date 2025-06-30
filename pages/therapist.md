@@ -35,6 +35,7 @@ FROM blast_warehouse.therapist_score_counting
   data={score_rows}
   x="Score"
   y="Counts"
+  series="Code"
 />
 
 {/each}
