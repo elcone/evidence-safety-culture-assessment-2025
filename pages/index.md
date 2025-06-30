@@ -1,4 +1,8 @@
-# Safety Culture Assessment 2025
+---
+title: Safety Culture Assessment 2025
+queries:
+  - questions_groups: questions_groups.sql
+---
 
 ## Role
 
@@ -58,52 +62,13 @@ GROUP BY
   "Question Group"
 ```
 
-### Core Safety Culture
+{#each questions_groups as row}
 
-<DataTable
-data={overview_kpis.where(`"Question Group" = 'CORE'`)}
-rows=all>
-<Column id="Code" title="Code" />
+### {row.\_Group}
+
+<DataTable data={overview_kpis.where(`"Question Group" = '${row._Group}'`)} rows=all>
 <Column id="Question" title="Question" />
 <Column id="Average Score" title="Average Score" />
 </DataTable>
 
-### Therapist Role
-
-<DataTable
-data={overview_kpis.where(`"Question Group" = 'THERAPIST'`)}
-rows=all>
-<Column id="Code" title="Code" />
-<Column id="Question" title="Question" />
-<Column id="Average Score" title="Average Score" />
-</DataTable>
-
-### Nurse Practitioner Role
-
-<DataTable
-data={overview_kpis.where(`"Question Group" = 'NP'`)}
-rows=all>
-<Column id="Code" title="Code" />
-<Column id="Question" title="Question" />
-<Column id="Average Score" title="Average Score" />
-</DataTable>
-
-### Administrative Personnel Role
-
-<DataTable
-data={overview_kpis.where(`"Question Group" = 'ADMINISTRATIVE_PERSONNEL'`)}
-rows=all>
-<Column id="Code" title="Code" />
-<Column id="Question" title="Question" />
-<Column id="Average Score" title="Average Score" />
-</DataTable>
-
-### QMHS Role
-
-<DataTable
-data={overview_kpis.where(`"Question Group" = 'QMHS'`)}
-rows=all>
-<Column id="Code" title="Code" />
-<Column id="Question" title="Question" />
-<Column id="Average Score" title="Average Score" />
-</DataTable>
+{/each}
