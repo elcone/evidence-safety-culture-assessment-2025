@@ -8,7 +8,9 @@ queries:
 ```sql codes
 SELECT DISTINCT Code, Question
 FROM blast_warehouse.safety_culture_assessment_2025_results
-WHERE "Question Group" = '${params.Group}'
+WHERE
+  "Question Group" = '${params.Group}'
+  AND Role LIKE '${inputs.selected_role.value}'
 ORDER BY try_cast(Code AS int), Code
 ```
 
@@ -21,6 +23,7 @@ FROM
   blast_warehouse.safety_culture_assessment_2025_results
 WHERE
   "Question Group" = '${params.Group}'
+  AND Role LIKE '${inputs.selected_role.value}'
 GROUP BY
   Code,
   Question
@@ -36,11 +39,27 @@ FROM
   blast_warehouse.safety_culture_assessment_2025_results
 WHERE
   "Question Group" = '${params.Group}'
+  AND Role LIKE '${inputs.selected_role.value}'
 GROUP BY
   Code,
   Question,
   Score
 ```
+
+```sql roles
+SELECT Role
+FROM blast_warehouse.safety_culture_assessment_2025_results
+WHERE "Question Group" = '${params.Group}'
+GROUP BY Role
+ORDER BY Role
+```
+
+<Dropdown
+name=selected_role
+data={roles}
+value=Role>
+<DropdownOption value="%" valueLabel="All Roles"/>
+</Dropdown>
 
 {#each codes as row}
 
