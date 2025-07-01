@@ -62,3 +62,23 @@ GROUP BY
 />
 
 {/each}
+
+## Individual Results
+
+```sql individual_results
+WITH cte_results AS (
+  SELECT
+    "File name",
+  	Question,
+  	Score
+  FROM blast_warehouse.safety_culture_assessment_2025_results
+  WHERE
+    "Question Group" = '${params.Group}'
+    AND Role LIKE '${inputs.selected_role.value}'
+)
+PIVOT cte_results
+ON "File name"
+USING sum(Score)
+```
+
+<DataTable data={individual_results} />
