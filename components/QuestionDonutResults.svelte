@@ -17,7 +17,7 @@
 
   $: queryFunction(`
     SELECT
-      Score AS name,
+      'Score:' || Score::int AS name,
       count(*) AS value
     FROM blast_warehouse.safety_culture_assessment_2025_results
     WHERE
