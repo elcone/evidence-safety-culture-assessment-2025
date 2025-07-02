@@ -54,13 +54,33 @@ GROUP BY Role
 ORDER BY Role
 ```
 
+```sql total_participants
+SELECT count(DISTINCT "File name") AS total_participants
+FROM blast_warehouse.safety_culture_assessment_2025_results
+WHERE
+  "Question Group" = '${params.Group}'
+  AND Role LIKE '${inputs.selected_role.value}'
+```
+
+<Note>
+  Some Staff members answered questions that are not assigned to their role, you can filter a specific role using the dropdown below.
+</Note>
+
 <Dropdown
   name=selected_role
   data={roles}
   value=Role
+  title="Select a Role"
 >
   <DropdownOption value="%" valueLabel="All Roles"/>
 </Dropdown>
+
+<div>
+  <BigValue
+    data={total_participants}
+    value="total_participants"
+  />
+</div>
 
 {#each codes as row}
 
@@ -80,7 +100,7 @@ ORDER BY Role
       data={score_rows}
       x="Score"
       y="Counts"
-      series="Code"
+      seriesLabels=false
     />
   </Tab>
 
