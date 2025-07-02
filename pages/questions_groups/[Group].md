@@ -73,12 +73,24 @@ value=Role>
   value="Average"
 />
 
-<BarChart
-  data={score_rows}
-  x="Score"
-  y="Counts"
-  series="Code"
-/>
+<Tabs background=true>
+  <Tab label="Bar Chart">
+    <BarChart
+      data={score_rows}
+      x="Score"
+      y="Counts"
+      series="Code"
+    />
+  </Tab>
+
+  <Tab label="Donut Chart">
+    <QuestionDonutResults
+      group={params.Group}
+      role={inputs.selected_role.value}
+      code={row.Code}
+    />
+  </Tab>
+</Tabs>
 
 {/each}
 
