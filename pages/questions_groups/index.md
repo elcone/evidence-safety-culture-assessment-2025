@@ -13,4 +13,4 @@ SELECT
 FROM ${questions_groups}
 ```
 
-<DataTable data={questions_groups_with_link} link=link/>
+<DataTable data={questions_groups_with_link} link=link />

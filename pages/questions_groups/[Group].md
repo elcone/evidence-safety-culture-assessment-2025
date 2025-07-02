@@ -55,10 +55,11 @@ ORDER BY Role
 ```
 
 <Dropdown
-name=selected_role
-data={roles}
-value=Role>
-<DropdownOption value="%" valueLabel="All Roles"/>
+  name=selected_role
+  data={roles}
+  value=Role
+>
+  <DropdownOption value="%" valueLabel="All Roles"/>
 </Dropdown>
 
 {#each codes as row}

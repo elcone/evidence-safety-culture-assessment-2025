@@ -66,9 +66,12 @@ GROUP BY
 
 ### {row.\_Group}
 
-<DataTable data={overview_kpis.where(`"Question Group" = '${row._Group}'`)} rows=all>
-<Column id="Question" title="Question" />
-<Column id="Average Score" title="Average Score" />
+<DataTable
+  data={overview_kpis.where(`"Question Group" = '${row._Group}'`)}
+  rows=all
+>
+  <Column id="Question" title="Question" />
+  <Column id="Average Score" title="Average Score" />
 </DataTable>
 
 {/each}
